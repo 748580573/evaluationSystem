@@ -80,4 +80,29 @@ public class UserService {
         session.commit();
         return isOk;
     }
+
+    /**
+     *
+     * @param number
+     * @param oldPassword
+     * @param newPassword
+     * @return  修改用户密码
+     */
+    public int updatePassword(String number,String oldPassword,String newPassword){
+        int isOK = 0;
+        session = SessionFactory.getSqlSession();
+        userMapper = session.getMapper(UserMapper.class);
+        User user = userMapper.selectUser(number);
+        if (user == null){
+            return isOK;
+        }else {
+            if (user.getPassword().equals(oldPassword)){
+                isOK = userMapper.modifyUser(user.getNumber(),newPassword);
+                session.commit();
+                return isOK;
+            }else {
+                return isOK;
+            }
+        }
+    }
 }

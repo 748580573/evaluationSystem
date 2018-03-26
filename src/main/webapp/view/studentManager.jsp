@@ -31,6 +31,9 @@
         $("#score").click(function () {
             $("#ifm").attr("src","http://localhost:8888/view/studentScore.jsp");
         });
+        $("#passModify").click(function () {
+            $("#ifm").attr("src","http://localhost:8888/view/userPasswordModify.jsp");
+        });
     }
 </script>
 <head>
@@ -53,21 +56,10 @@
             <a id="score" class="nav-link" href="#">成绩查询</a>
         </li>
         <li id="modifyPassword" class="nav-item">
-            <a class="nav-link" href="#">密码修改</a>
+            <a id="passModify" class="nav-link" href="#">密码修改</a>
         </li>
 
-        <!-- Dropdown -->
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                Dropdown link
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">课表查询</a>
-                <a class="dropdown-item" href="#">成绩查询</a>
-                <a class="dropdown-item" href="#">个人信息查询</a>
-                <a class="dropdown-item" href="#">密码修改</a>
-            </div>
-        </li>
+
     </ul>
     <form class="form-inline" style="position: relative;left: 60%;margin: 1px;">
         <input class="form-control" type="text" placeholder="Search">

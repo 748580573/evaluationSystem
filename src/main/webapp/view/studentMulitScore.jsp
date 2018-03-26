@@ -38,6 +38,14 @@
                         return index + 1;
                     }
                 },{
+                    title:"学生编号",
+                    field:"studentNumber",
+                    align:"center"
+                },{
+                    title:"学生姓名",
+                    field:"studentName",
+                    align:"center"
+                },{
                     title:'课程编号',
                     field:'courseNumber',
                     align:'center'

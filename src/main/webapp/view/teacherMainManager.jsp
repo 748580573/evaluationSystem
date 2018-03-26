@@ -34,6 +34,9 @@
         $("#addStudent").click(function () {
             $("#ifm").attr("src","http://localhost:8888/view/studentAdd.jsp");
         });
+        $("#passModify").click(function () {
+            $("#ifm").attr("src","http://localhost:8888/view/userPasswordModify.jsp");
+        });
     }
 </script>
 <head>
@@ -56,7 +59,7 @@
             <a id="score" class="nav-link" href="#">学生成绩</a>
         </li>
         <li id="modifyPassword" class="nav-item">
-            <a class="nav-link" href="#">密码修改</a>
+            <a id="passModify" class="nav-link" href="#">密码修改</a>
         </li>
 
     </ul>

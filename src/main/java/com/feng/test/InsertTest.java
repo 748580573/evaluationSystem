@@ -17,10 +17,8 @@ import java.util.List;
 
 public class InsertTest {
     public static void main(String[] args) throws Exception {
-        ScoreService scoreService = new ScoreService();
-        List<Score> list = scoreService.selectMultiScore();
-        ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(list);
-        System.out.println(json);
+        StudentServlce studentServlce = new StudentServlce();
+        List<Student> list = studentServlce.selectStudentByClazzNumber("04");
+
     }
 }

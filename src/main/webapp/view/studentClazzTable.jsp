@@ -199,7 +199,6 @@
 </head>
 <body>
 <div class="table-responsive" style="border: 2px solid gainsboro">
-    <div style="width: auto;height: 3%;background-color: gainsboro">学生信息添加</div>
     <form action="" >
         <div class="table-responsive">
             <table class="table table-bordered " style="margin-top:30px;">

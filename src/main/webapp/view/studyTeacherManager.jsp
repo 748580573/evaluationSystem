@@ -41,9 +41,12 @@
             $("#ifm").attr("src","http://localhost:8888/view/teacherSelectAll.jsp");
         });
         $("#mulitScore").click(function () {
-            $("#ifm").attr("src","http://localhost:8888/view/teacherSelectAll.jsp");
+            $("#ifm").attr("src","http://localhost:8888/view/studentMulitScore.jsp");
         });
     }
+    $("#passModify").click(function () {
+        $("#ifm").attr("src","http://localhost:8888/view/userPasswordModify.jsp");
+    });
 </script>
 <head>
     <title>教务处</title>
@@ -64,7 +67,7 @@
         <li id="mulitScore" class="nav-item">
             <a class="nav-link" href="#">综测成绩</a>
         </li>
-        <li id="modifyPassword" class="nav-item">
+        <li id="passModify" class="nav-item">
             <a class="nav-link" href="#">密码修改</a>
         </li>
 

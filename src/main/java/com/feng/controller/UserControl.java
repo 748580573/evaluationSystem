@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.feng.bean.User;
 import com.feng.service.UserService;
+import com.feng.tool.Flag;
 import com.feng.tool.UserInfo;
 import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,27 @@ public class UserControl {
         }
         session.setAttribute("account",account);
         String json = objectMapper.writeValueAsString(user);
+        return json;
+    }
+
+    /**
+     *
+     * @param number
+     * @param oldPassword
+     * @param newPassword
+     * @return   修改用户密码
+     * @throws JsonProcessingException
+     */
+    @RequestMapping(value = "/updatePassword",produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String updatePassword(@RequestParam("number") String number,@RequestParam("oldPassword") String oldPassword,@RequestParam("newPassword") String newPassword) throws JsonProcessingException {
+        System.out.println("进入用户修改");
+        ObjectMapper objectMapper = new ObjectMapper();
+        userService = new UserService();
+        Flag flag = new Flag();
+        flag.isOK = userService.updatePassword(number, oldPassword,newPassword);
+        String json = objectMapper.writeValueAsString(flag);
+        System.out.println(json);
         return json;
     }
 }

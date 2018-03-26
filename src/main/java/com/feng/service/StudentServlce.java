@@ -85,9 +85,6 @@ public class StudentServlce {
         session = SessionFactory.getSqlSession();
         studentMapper = session.getMapper(StudentMapper.class);
         List<Student> list = studentMapper.selectStudentByClazzNumber(clazzNumber);
-        for (Student student : list){
-            student.getScoreList().clear();
-        }
         return list;
     }
 

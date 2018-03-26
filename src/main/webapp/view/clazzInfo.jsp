@@ -99,6 +99,7 @@
     function Edit(index) {
         var data = $("#table").bootstrapTable('getData');
         var clazzNumber = data[index].number;
+        alert("number" + clazzNumber);
         $(location).attr('href',"http://localhost:8888/view/clazzStudentInfo.jsp?number=" + clazzNumber);
     }
 </script>
