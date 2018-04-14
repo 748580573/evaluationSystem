@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.feng.bean.Schedule;
 import com.feng.service.ScheduleService;
+import com.feng.tool.AccountUtil;
 import com.feng.tool.Flag;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,11 +31,17 @@ public class ScheduleControl {
     @ResponseBody
     public String selectAllSchedule() throws JsonProcessingException {
         HttpSession session = request.getSession();
-        System.out.println("账号为：" + session.getAttribute("account"));
+        String account = (String) session.getAttribute("account");
+
+        String period = AccountUtil.getPeriod(account);                      //获得当前学期
+        String clazz = AccountUtil.getClazz(account);                        //获取班级编号
+        System.out.println(period + "  "  + clazz);
+
         ObjectMapper objectMapper =  new ObjectMapper();
         scheduleService =  new ScheduleService();
-        List<Schedule> list = scheduleService.selectAllSchedule("04");
+        List<Schedule> list = scheduleService.selectAllSchedule(clazz,period);
         String json = objectMapper.writeValueAsString(list);
+        System.out.println(json);
         return json;
     }
 

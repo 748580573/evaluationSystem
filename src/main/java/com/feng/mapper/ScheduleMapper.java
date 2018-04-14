@@ -12,7 +12,7 @@ public interface ScheduleMapper {
      * @param clazzNumber
      * @return    查询所有与该班级有关的课程
      */
-    @Select("select * from schedule where clazzNumber = #{clazzNumber}")
+    @Select("select * from schedule where clazzNumber = #{clazzNumber} and period = #{period}")
     @Results({
             @Result(column = "clazzNumber",property = "clazzNumber"),
             @Result(column = "courseNumber",property = "courseNumber"),
@@ -26,7 +26,7 @@ public interface ScheduleMapper {
             @Result(column = "orders",property = "orders"),
             @Result(column = "type",property = "type")
     })
-    List<Schedule> selectAllSchedule(@Param("clazzNumber") String clazzNumber);
+    List<Schedule> selectAllSchedule(@Param("clazzNumber") String clazzNumber,@Param("period") String period);
 
 
     /**

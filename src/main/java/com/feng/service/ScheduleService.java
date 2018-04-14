@@ -14,12 +14,13 @@ public class ScheduleService {
     /**
      *
      * @param clazzNumber
+     * @param period
      * @return       获取该班课表
      */
-    public List<Schedule> selectAllSchedule(String clazzNumber){
+    public List<Schedule> selectAllSchedule(String clazzNumber,String period){
         session = SessionFactory.getSqlSession();
         scheduleMapper = session.getMapper(ScheduleMapper.class);
-        List<Schedule> list  = scheduleMapper.selectAllSchedule(clazzNumber);
+        List<Schedule> list  = scheduleMapper.selectAllSchedule(clazzNumber,period);
         session.commit();
         System.out.println("课表查询结束");
         return list;
