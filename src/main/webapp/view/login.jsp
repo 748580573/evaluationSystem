@@ -123,7 +123,7 @@
             密&nbsp;&nbsp;&nbsp;&nbsp;码：<input id="pa" type="password" name="password" autocomplete="off"/>
         </div>
         <div class="container">
-            <input id="subm" type="button" class="btn btn-info" value="提&nbsp;&nbsp;&nbsp;&nbsp;交">
+            <input style="margin-left: 12%;" id="subm" type="button" class="btn btn-info" value="提&nbsp;&nbsp;&nbsp;&nbsp;交">
         </div>
     </div>
 </form>
