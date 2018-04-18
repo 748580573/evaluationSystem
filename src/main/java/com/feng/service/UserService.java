@@ -5,9 +5,11 @@ import com.feng.mapper.UserMapper;
 import com.feng.tool.SessionFactory;
 import com.feng.tool.UserInfo;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("userService")
 public class UserService {
     private SqlSession session = null;
     private UserMapper userMapper = null;

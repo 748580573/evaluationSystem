@@ -14,7 +14,8 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/applicationContext*.xml</param-value>
 	</context-param>
-	
+
+
 	<!-- 定义Spring MVC的前端控制器 -->
   <servlet>
     <servlet-name>springmvc</servlet-name>

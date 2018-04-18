@@ -7,10 +7,12 @@ import com.feng.bean.User;
 import com.feng.mapper.TeacherMapper;
 import com.feng.tool.SessionFactory;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service("teacherService")
 public class TeacherService {
     private SqlSession session = null;
     private TeacherMapper teacherMapper = null;

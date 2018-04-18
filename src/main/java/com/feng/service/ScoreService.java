@@ -9,12 +9,14 @@ import com.feng.tool.SessionFactory;
 import com.feng.tool.UserInfo;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service("scoreService")
 public class ScoreService {
     private SqlSession session =  null;
     private ScoreMapper scoreMapper = null;

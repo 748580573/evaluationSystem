@@ -6,6 +6,7 @@ import com.feng.bean.Student;
 import com.feng.bean.User;
 import com.feng.service.StudentServlce;
 import com.feng.service.UserService;
+import com.feng.tool.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
@@ -20,7 +22,9 @@ import java.util.List;
 
 @Controller
 public class StudentControl {
+    @Resource(name = "studentServlce")
     private StudentServlce studentServlce = null;
+    @Resource(name = "userService")
     private UserService userService = null;
     @Autowired
     HttpServletRequest request;
@@ -31,15 +35,13 @@ public class StudentControl {
      */
     @RequestMapping("/addStudent")
     public String addStudent(Student student){
-        userService = new UserService();
-        studentServlce = new StudentServlce();
         User user = new User();                          //先添加用户信息
         user.setNumber(student.getNumber());
         user.setPassword("123456");                      //默认密码123456
         user.setType("学生");
         userService.addUser(user);
         studentServlce.studentAdd(student);
-        return "hello";
+        return "{\"flag\":\"成功\"";
     }
 
     /**
@@ -51,10 +53,8 @@ public class StudentControl {
     @RequestMapping(value = "/selectAllStudnet",produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String selectAllStudnet() throws JsonProcessingException, UnsupportedEncodingException {
-        studentServlce = new StudentServlce();
-        ObjectMapper objectMapper = new ObjectMapper();            //将pojo转换为json数据
         List<Student> list = studentServlce.selectAllStudent();
-        String json = objectMapper.writeValueAsString(list);
+        String json = JsonUtil.asJson(list);
         return json;
     }
 
@@ -67,11 +67,9 @@ public class StudentControl {
     @RequestMapping(value = "/deleteStudent",produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String deleteStudent(@RequestParam(value = "number",required = true) String number) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();            //将pojo转换为json数据
-        studentServlce = new StudentServlce();
         studentServlce.deleteStudnet(number);
         List<Student> list = studentServlce.selectAllStudent();
-        String json = objectMapper.writeValueAsString(list);
+        String json = JsonUtil.asJson(list);
         return json;
     }
 
@@ -85,11 +83,9 @@ public class StudentControl {
     @ResponseBody
     public String selectStudentByNumber() throws JsonProcessingException {
         HttpSession session = request.getSession();
-        ObjectMapper objectMapper = new ObjectMapper();            //将pojo转换为json数据
-        studentServlce = new StudentServlce();
         String number = (String) session.getAttribute("account");
         Student student = studentServlce.selectStudentByNumber(number);
-        String json = objectMapper.writeValueAsString(student);
+        String json = JsonUtil.asJson(student);
         return json;
     }
 
@@ -103,10 +99,8 @@ public class StudentControl {
     @ResponseBody
 
     public String selectStudentByClazzNumber(@RequestParam("clazzNumber") String clazzNumber) throws JsonProcessingException {
-        StudentServlce studentServlce = new StudentServlce();
-        ObjectMapper objectMapper = new ObjectMapper();
         List<Student> list = studentServlce.selectStudentByClazzNumber(clazzNumber);
-        String json = objectMapper.writeValueAsString(list);
+        String json = JsonUtil.asJson(studentServlce);
         return json;
     }
 }

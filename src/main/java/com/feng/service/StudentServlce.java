@@ -7,9 +7,11 @@ import com.feng.mapper.StudentMapper;
 import com.feng.mapper.UserMapper;
 import com.feng.tool.SessionFactory;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("studentServlce")
 public class StudentServlce {
 
     private SqlSession session = null;

@@ -4,9 +4,11 @@ import com.feng.bean.Schedule;
 import com.feng.mapper.ScheduleMapper;
 import com.feng.tool.SessionFactory;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("scheduleService")
 public class ScheduleService {
     private SqlSession session =  null;
     private ScheduleMapper scheduleMapper  = null;

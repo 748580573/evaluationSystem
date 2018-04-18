@@ -4,9 +4,11 @@ import com.feng.bean.Clazz;
 import com.feng.mapper.ClazzMapper;
 import com.feng.tool.SessionFactory;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("clazzService")
 public class ClazzService {
 
 
